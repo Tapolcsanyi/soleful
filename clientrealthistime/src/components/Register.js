@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { useHistory } from "react-router-dom";
 import { register } from "../modules/authManager";
+import { useHistory } from 'react-router-dom';
 
 export default function Register() {
+
   const history = useHistory();
 
   const [firstName, setFirstName] = useState();
@@ -21,7 +22,7 @@ export default function Register() {
     } else {
       const userProfile = { firstName, lastName, displayName, imageLocation, email };
       register(userProfile, password)
-        .then(() => history.push("/"));
+        .then(() => history.push('/'));
     }
  };
 

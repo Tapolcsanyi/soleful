@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { login } from "../modules/authManager";
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const history = useHistory();
@@ -12,7 +13,7 @@ export default function Login() {
   const loginSubmit = (e) => {
     e.preventDefault();
     login(email, password)
-      .then(() => history.push("/"))
+      .then(() => history.push('/'))
       .catch(() => alert("Invalid email or password"));
   };
 

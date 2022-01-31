@@ -1,6 +1,6 @@
 import { getToken } from "./authManager";
 
-const baseUrl = "/api/userProfile";
+const baseUrl = "/api/user";
 
 export const getAllUserProfiles = () => {
 

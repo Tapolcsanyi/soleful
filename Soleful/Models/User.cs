@@ -32,10 +32,6 @@ namespace Soleful.Models
 
         public DateTime CreateDateTime { get; set; }
 
-        [DataType(DataType.Url)]
-        [MaxLength(255)]
-        public string ImageLocation { get; set; }
-
         [Required]
         public int UserTypeId { get; set; }
         public UserType UserType { get; set; }

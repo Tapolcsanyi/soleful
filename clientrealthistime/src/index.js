@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import firebase from "firebase/app";
-import "bootstrap/dist/css/bootstrap.min.css";
+import firebase from 'firebase/app'; //v9
+import 'firebase/auth'; //v9
+import 'firebase/firestore'; //v9
 import "./index.css";
 
 const firebaseConfig = {
@@ -18,7 +19,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

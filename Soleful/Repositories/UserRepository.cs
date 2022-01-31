@@ -20,13 +20,12 @@ namespace Soleful.Repositories
                     cmd.CommandText = @"
                     SELECT up.Id AS UserId, up.DisplayName, up.FirstName, up.LastName,
 		                up.Email AS UserEmail, up.CreateDateTime AS UserCreateDateTime, 
-		                up.ImageLocation AS UserImageLocation, up.UserTypeId, ut.[Name]
+		                up.UserTypeId, ut.[Name]
 
-                    FROM User up
+                    FROM [User] up
                      LEFT JOIN UserType ut
                         ON up.UserTypeId = ut.Id
                         ORDER BY DisplayName ASC";
-
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         var users = new List<User>();
@@ -40,7 +39,6 @@ namespace Soleful.Repositories
                                 LastName = DbUtils.GetString(reader, "LastName"),
                                 Email = DbUtils.GetString(reader, "UserEmail"),
                                 CreateDateTime = DbUtils.GetDateTime(reader, "UserCreateDateTime"),
-                                ImageLocation = DbUtils.GetString(reader, "UserImageLocation"),
                                 UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                                 UserType = new UserType()
                                 {
@@ -63,15 +61,14 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = $@"
-                    SELECT up.Id AS UserId, up.DisplayName, up.FirstName, up.LastName,
-		                up.Email AS UserEmail, up.CreateDateTime AS UserCreateDateTime, 
-		                up.ImageLocation AS UserImageLocation, up.UserTypeId, ut.[Name]
+                    SELECT u.Id AS UserId, u.DisplayName, u.FirstName, u.LastName,
+		                u.Email AS UserEmail, u.CreateDateTime AS UserCreateDateTime, 
+		                u.UserTypeId, ut.[Name]
 
-                           FROM User up
+                           From User u
                            LEFT JOIN UserType ut
-                           ON up.UserTypeId = ut.Id
-                            WHERE up.Id = {id}";
-
+                           ON u.UserTypeId = ut.Id
+                            WHERE u.Id = {id}";
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         var users = new User();
@@ -95,7 +92,6 @@ namespace Soleful.Repositories
                 LastName = DbUtils.GetString(reader, "LastName"),
                 Email = DbUtils.GetString(reader, "UserEmail"),
                 CreateDateTime = DbUtils.GetDateTime(reader, "UserCreateDateTime"),
-                ImageLocation = DbUtils.GetString(reader, "UserImageLocation"),
                 UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                 UserType = new UserType()
                 {
@@ -117,9 +113,9 @@ namespace Soleful.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, up.DisplayName, 
-                               up.Email, up.CreateDateTime, up.ImageLocation, up.UserTypeId,
+                               up.Email, up.CreateDateTime, up.UserTypeId,
                                ut.Name AS UserTypeName
-                          FROM User up
+                          FROM [User] up
                                LEFT JOIN UserType ut on up.UserTypeId = ut.Id
                          WHERE FirebaseUserId = @FirebaseuserId";
 
@@ -139,7 +135,6 @@ namespace Soleful.Repositories
                             DisplayName = DbUtils.GetString(reader, "DisplayName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                             UserType = new UserType()
                             {
@@ -173,7 +168,6 @@ namespace Soleful.Repositories
                     DbUtils.AddParameter(cmd, "@DisplayName", user.DisplayName);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);
                     DbUtils.AddParameter(cmd, "@CreateDateTime", user.CreateDateTime);
-                    DbUtils.AddParameter(cmd, "@ImageLocation", user.ImageLocation);
                     DbUtils.AddParameter(cmd, "@UserTypeId", user.UserTypeId);
 
                     user.Id = (int)cmd.ExecuteScalar();
