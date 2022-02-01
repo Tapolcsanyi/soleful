@@ -11,8 +11,8 @@ export const SneakerCard = ({ sneaker }) => {
                 </Link>
             </CardBody>
             <CardBody>
+                <p>{sneaker.shoe}</p>
                 <p>{sneaker.name}</p>
-                <p>{sneaker.colorway}</p>
             </CardBody>
         </Card>)
 }

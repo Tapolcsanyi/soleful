@@ -11,40 +11,40 @@ namespace Soleful.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SneakerController : ControllerBase
+    public class CollectionController : ControllerBase
     {
-        private readonly ISneakerRepository _sneakerRepository;
-        public SneakerController(ISneakerRepository sneakerRepository)
+        private readonly ICollectionRepository _collectionRepository;
+        public CollectionController(ICollectionRepository collectionRepository)
         {
-            _sneakerRepository = sneakerRepository;
+            _collectionRepository = collectionRepository;
         }
-        // GET: api/<SneakerController>
+        // GET: api/<ListController>
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_sneakerRepository.GetAll());
+            return Ok(_collectionRepository.GetAll());
         }
 
-        // GET api/<SneakerController>/5
+        // GET api/<ListController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public string Get(int id)
         {
-            return Ok(_sneakerRepository.GetSneakerById(id));
+            return "value";
         }
 
-        // POST api/<SneakerController>
+        // POST api/<ListController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<SneakerController>/5
+        // PUT api/<ListController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<SneakerController>/5
+        // DELETE api/<ListController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

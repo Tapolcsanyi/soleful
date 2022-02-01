@@ -14,7 +14,7 @@ export const getAllSneakers = () => {
             if (res.ok) {
                 return res.json()
             } else {
-                throw new Error("An error occurred while retrieving posts")
+                throw new Error("An error occurred while retrieving sneakers")
             }
         })
     })
@@ -32,7 +32,7 @@ export const getSneakerById = (id) => {
             if (res.ok) {
                 return res.json()
             } else {
-                throw new Error("An error occurred while retrieving the post")
+                throw new Error("An error occured while retrieving the sneaker")
             }
         })
     })

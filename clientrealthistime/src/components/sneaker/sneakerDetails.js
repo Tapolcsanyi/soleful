@@ -19,10 +19,9 @@ export const SneakerDetails = () => {
         getSneaker(id);
     }, []);
 
-    // if (!post.userProfile) {
-    //     return null;
-    // }
-
+        if (!sneaker.title) {
+        return null;
+    }
     return (
         <>
             <ListGroup>

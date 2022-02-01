@@ -23,6 +23,7 @@ namespace Soleful
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ISneakerRepository, SneakerRepository>();
+            services.AddTransient<ICollectionRepository, CollectionRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
