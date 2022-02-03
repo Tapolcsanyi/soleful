@@ -44,6 +44,9 @@ namespace Soleful.Controllers
         [HttpPost]
         public IActionResult AddUserSneaker(UserSneaker sneaker)
         {
+            var currentUser = GetCurrentUserProfile();
+            int userId = currentUser.Id;
+            sneaker.UserId = userId;
             _usersneakerRepository.Add(sneaker);
             return CreatedAtAction("Get", new { id = sneaker.Id }, sneaker);
         }

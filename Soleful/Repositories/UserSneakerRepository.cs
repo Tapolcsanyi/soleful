@@ -24,12 +24,12 @@ namespace Soleful.Repositories
                     LEFT JOIN Sneaker s ON us.SneakerId = s.Id
                     LEFT JOIN [User] u ON us.UserId = u.Id
                     LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
-                    WHERE us.Id = {id};";
+                    WHERE us.UserId = {id};";
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         var sneaker = new List<UserSneaker>();
-                        if (reader.Read())
+                        while (reader.Read())
                         {
                             sneaker.Add(NewUserSneakerFromReader(reader));
                         }
@@ -73,10 +73,12 @@ namespace Soleful.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"INSERT INTO UserSneaker (UserId, SneakerId)
+                                        OUTPUT INSERTED.ID
                                                      VALUES (@UserId, @SneakerId)";
                     cmd.Parameters.AddWithValue("@UserId", sneaker.UserId);
                     cmd.Parameters.AddWithValue("@SneakerId", sneaker.SneakerId);
-                    cmd.ExecuteNonQuery();
+
+                    sneaker.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }

@@ -20,7 +20,7 @@ export const getAllUserSneakers = () => {
     })
 }
 
-export const addSneaker = (sneaker) => {
+export const addUserSneaker = (sneaker) => {
     return getToken().then(token => {
         return fetch(baseUrl, {
             method: "POST",

@@ -37,3 +37,21 @@ export const getUserProfileById = (id) => {
         })
     })
 }
+
+export const getUserProfileByFirebaseId = (uid) => {
+
+    return getToken().then(token => {
+        return fetch(baseUrl + `/${uid}`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new Error("An error occured while retrieving user profile details")
+            }
+        })
+    })
+}
