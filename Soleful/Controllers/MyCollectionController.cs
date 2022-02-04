@@ -59,8 +59,10 @@ namespace Soleful.Controllers
 
         // DELETE api/<MyCollection>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _usersneakerRepository.Delete(id);
+            return NoContent();
         }
         private User GetCurrentUserProfile()
         {

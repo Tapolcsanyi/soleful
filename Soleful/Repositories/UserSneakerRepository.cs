@@ -18,7 +18,7 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @$"
-                    SELECT us.Id, us.SneakerId, us.UserId, s.Id, s.Name, s.Brand, s.Gender, s.Colorway, s.ReleaseDate, s.RetailPrice, s.Shoe, s.Title, s.Year, u.Id,
+                    SELECT DISTINCT us.Id, us.SneakerId, us.UserId, s.Id, s.Name, s.Brand, s.Gender, s.Colorway, s.ReleaseDate, s.RetailPrice, s.Shoe, s.Title, s.Year, u.Id,
                     u.FirstName, u.Lastname, u.DisplayName, u.Email, u.CreateDateTime, u.UserTypeId, ut.Id, ut.Name
                     FROM UserSneaker us
                     LEFT JOIN Sneaker s ON us.SneakerId = s.Id
@@ -79,6 +79,21 @@ namespace Soleful.Repositories
                     cmd.Parameters.AddWithValue("@SneakerId", sneaker.SneakerId);
 
                     sneaker.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @$"DELETE FROM UserSneaker
+                                         WHERE id = {id};";
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
