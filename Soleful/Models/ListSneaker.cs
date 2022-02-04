@@ -7,7 +7,8 @@ namespace Soleful.Models
 {
     public class ListSneaker
     {
-        public int Id;
-        public int SneakerId;
+        public int Id { get; set; }
+        public int SneakerId { get; set; }
+        public int ListId { get; set; }
     }
 }
