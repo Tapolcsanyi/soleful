@@ -65,7 +65,7 @@ namespace Soleful.Repositories
 		                u.Email AS UserEmail, u.CreateDateTime AS UserCreateDateTime, 
 		                u.UserTypeId, ut.[Name]
 
-                           From User u
+                           From [User] u
                            LEFT JOIN UserType ut
                            ON u.UserTypeId = ut.Id
                             WHERE u.Id = {id}";
@@ -157,11 +157,11 @@ namespace Soleful.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO User (FirebaseUserId, FirstName, LastName, DisplayName, 
-                                                                 Email, CreateDateTime, ImageLocation, UserTypeId)
+                    cmd.CommandText = @"INSERT INTO [User] (FirebaseUserId, FirstName, LastName, DisplayName, 
+                                                                 Email, CreateDateTime, UserTypeId)
                                         OUTPUT INSERTED.ID
                                         VALUES (@FirebaseUserId, @FirstName, @LastName, @DisplayName, 
-                                                @Email, @CreateDateTime, @ImageLocation, @UserTypeId)";
+                                                @Email, @CreateDateTime, @UserTypeId)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@FirstName", user.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", user.LastName);

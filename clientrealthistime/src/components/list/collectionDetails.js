@@ -13,21 +13,19 @@ export const CollectionDetails = () => {
         getListSneakerByListId(id).then(setSneakers);
     }
 
+    const handleDeleteSneaker = (listsneakerid) => {
+        deleteListSneaker(listsneakerid).then(res => (
+            getSneakers()
+        ))
+    }
+
     useEffect(() => {
         getSneakers(id);
     }, []);
 
-    const handleDeleteSneaker = (listsneakerid) => {
-        deleteListSneaker(listsneakerid).then(res => (
-            getSneakers()
-            .then (res =>
-                console.log(res))
-        ))
-    }
-
     return (
         <> <div>
-            <div>{sneakers.map(usneaker => <ListSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
+            <div>{sneakers.map(sneaker => <ListSneakerCard key={sneaker.id} sneaker={sneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
         </div>
         </>
     )

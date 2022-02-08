@@ -78,7 +78,7 @@ export const SneakerDetails = () => {
             </div>
             <div>
                 <select className="" id="ListId" onChange={handleControlledInputChange}>
-                    <option defaultValue={"0"} disabled >Add to List</option>
+                    <option selected disabled >Add to List</option>
                         {lists.map(list => <option key={list.id} value={list.id}>{list.name}</option>)}
                 </select>
             </div>
