@@ -39,7 +39,7 @@ export const SneakerCard = ({ sneaker }) => {
                 <p>{sneaker.shoe}</p>
                 <p>{sneaker.name}</p>
             </CardBody>
-            <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add</Button>
+            <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
         </Card>)
 }
 

@@ -10,5 +10,7 @@ namespace Soleful.Models
         public int Id { get; set; }
         public int SneakerId { get; set; }
         public int ListId { get; set; }
+        public Sneaker sneaker { get; set; }
+        public Collection list { get; set; }
     }
 }

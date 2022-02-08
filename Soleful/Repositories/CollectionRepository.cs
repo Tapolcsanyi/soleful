@@ -78,7 +78,7 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Post (
+                        INSERT INTO Collection (
                             UserId, Name )
                         OUTPUT INSERTED.ID
                         VALUES (
@@ -128,6 +128,23 @@ namespace Soleful.Repositories
                     cmd.CommandText = @$"DELETE FROM Collection
                                          WHERE id = {id};";
                     cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public void Update(Collection collection)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE Collection
+                                        SET Name = @name
+                                        WHERE Id = @id";
+                    cmd.Parameters.AddWithValue("@name", collection.Name);
+                    cmd.Parameters.AddWithValue("@id", collection.Id);
 
                     cmd.ExecuteNonQuery();
                 }

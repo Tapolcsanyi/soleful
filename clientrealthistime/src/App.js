@@ -21,7 +21,6 @@ function App() {
     <Router>
       <Header isLoggedIn={isLoggedIn}/>
       <ApplicationViews isLoggedIn={isLoggedIn}/>
-      <UserSneakerList />
     </Router>
   );
 }

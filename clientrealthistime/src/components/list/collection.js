@@ -3,19 +3,25 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react/cjs/react.development";
 import { Card, CardBody, Button } from "reactstrap";
-import { deleteUserSneaker } from "../../modules/userSneakerManager";
 
 export const CollectionCard = ({ collection, handleDeleteCollection }) => {
+
+    const history = useHistory();
+
+    const handleEditList = () => {
+        history.push(`/listeditform/${collection.id}`);
+    };
 
     return (
         <Card>
             <CardBody>
-                <Link to={`/collection/${collection.id}`}>
+                <Link to={`/lists/${collection.id}`}>
                     <h3>{collection.name}</h3>
                 </Link>
             </CardBody>
-            <Button onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from Collection</Button>
+            <Button onClick={() => handleEditList(collection.id)}>Edit List</Button>
+            <Button onClick={() => handleDeleteCollection(collection.id)}>Delete List</Button>
         </Card>)
 }
 
-export default UserSneakerCard;
+export default CollectionCard;

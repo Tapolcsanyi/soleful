@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { getAllUserSneakers } from '../../modules/userSneakerManager';
-import { UserSneakerCard } from "./userSneakerCard";
-import { deleteUserSneaker } from "../../modules/userSneakerManager";
+import { CollectionCard } from "./collection";
+import { deleteCollection, getAllUserCollection } from "../../modules/collectionManager";
+import { Button } from "reactstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export const UserSneakerList = () => {
+export const CollectionList = () => {
     const [collections, setCollections] = useState([]);
 
-    const getSneakers = () => {
-        return getAllUserSneakers().then(sneakers => {
-            setSneakers(sneakers)
+    const history = useHistory();
+
+    const getCollections = () => {
+        return getAllUserCollection().then(collections => {
+            setCollections(collections)
         });
     };
 
-    const handleDeleteSneaker = (sneakerid) => {
-        deleteUserSneaker(sneakerid).then(res => (
-            getSneakers()
+    const handleDeleteCollection = (collectionId) => {
+        deleteCollection(collectionId).then(res => (
+            getCollections()
             .then (res =>
                 console.log(res))
         ))
     }
 
     useEffect(() => {
-        getSneakers();
+        getCollections();
     }, []);
 
-    console.log(sneakers)
-
     return (
-        <> <div>
-            <div>{sneakers.map(usneaker => <UserSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
-        </div>
+        <> 
+            <div>
+                <Button onClick={() => history.push("/listform")}>Create a List</Button>
+            </div>
+            <div>
+                <div>{collections.map(collection => <CollectionCard key={collection.id} collection={collection} handleDeleteCollection={handleDeleteCollection}/>)}</div>
+            </div>
         </>
     )
 }
-export default UserSneakerList;
+export default CollectionList;

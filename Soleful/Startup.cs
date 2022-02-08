@@ -23,6 +23,7 @@ namespace Soleful
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ISneakerRepository, SneakerRepository>();
+            services.AddTransient<IListSneakerRepository, ListSneakerRepository>();
             services.AddTransient<ICollectionRepository, CollectionRepository>();
             services.AddTransient<IUserSneakerRepository, UserSneakerRepository>();
             services.AddTransient<ICollectionRepository, CollectionRepository>();

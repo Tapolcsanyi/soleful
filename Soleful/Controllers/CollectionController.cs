@@ -61,8 +61,15 @@ namespace Soleful.Controllers
 
         // PUT api/<ListController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Collection collection)
         {
+            if (id != collection.Id)
+            {
+                return BadRequest();
+            }
+
+            _collectionRepository.Update(collection);
+            return NoContent();
         }
 
         // DELETE api/<ListController>/5

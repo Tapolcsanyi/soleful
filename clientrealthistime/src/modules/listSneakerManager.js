@@ -1,8 +1,8 @@
 import { getToken } from "./authManager";
 
-const baseUrl = "/api/collection";
+const baseUrl = "/api/listsneaker";
 
-export const getAllUserCollection = () => {
+export const getAllListSneakers = () => {
 
     return getToken().then(token => {
         return fetch(baseUrl, {
@@ -19,7 +19,8 @@ export const getAllUserCollection = () => {
         })
     })
 }
-export const getCollectionById = (id) => {
+
+export const getListSneakerByListId = (id) => {
 
     return getToken().then(token => {
         return fetch(baseUrl + `/${id}`, {
@@ -31,23 +32,13 @@ export const getCollectionById = (id) => {
             if (res.ok) {
                 return res.json()
             } else {
-                throw new Error("An error occured while retrieving the sneaker")
+                throw new Error("An error occured while retrieving the list sneaker")
             }
         })
     })
 }
 
-export const updateCollection = (collection) => {
-    return fetch(`${baseUrl}/${collection.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(collection),
-    });
-};
-
-export const addCollection = (sneaker) => {
+export const addListSneaker = (sneaker) => {
     return getToken().then(token => {
         return fetch(baseUrl, {
             method: "POST",
@@ -66,7 +57,7 @@ export const addCollection = (sneaker) => {
     })
 }
 
-export const deleteCollection = (id) => {
+export const deleteListSneaker = (id) => {
     return getToken().then(token => {
         return fetch(`${baseUrl}/${id}`, {
             method: "DELETE",

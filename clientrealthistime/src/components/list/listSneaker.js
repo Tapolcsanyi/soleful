@@ -5,9 +5,7 @@ import { useState } from "react/cjs/react.development";
 import { Card, CardBody, Button } from "reactstrap";
 import { deleteUserSneaker } from "../../modules/userSneakerManager";
 
-export const UserSneakerCard = ({ usneaker, handleDeleteSneaker }) => {
-
-    const history = useHistory();
+export const ListSneakerCard = ({ usneaker, handleDeleteSneaker }) => {
 
     return (
         <Card>
@@ -20,8 +18,8 @@ export const UserSneakerCard = ({ usneaker, handleDeleteSneaker }) => {
                 <p>{usneaker.sneaker.shoe}</p>
                 <p>{usneaker.sneaker.name}</p>
             </CardBody>
-            <Button onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from Collection</Button>
+            <Button onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from List</Button>
         </Card>)
 }
 
-export default UserSneakerCard;
+export default ListSneakerCard;

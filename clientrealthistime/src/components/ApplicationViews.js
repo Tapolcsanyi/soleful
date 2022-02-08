@@ -9,6 +9,10 @@ import SneakerDetails from "./sneaker/sneakerDetails";
 import firebase from "firebase";
 import 'firebase/auth'; //v9
 import 'firebase/firestore'; //v9
+import { CollectionList } from "./list/collectionList";
+import { CollectionDetails } from "./list/collectionDetails";
+import { ListForm } from "./list/listForm";
+import { ListUpdateForm } from "./list/listEditForm";
 
 export default function ApplicationViews({ isLoggedIn }) {
 
@@ -27,6 +31,22 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/sneaker/:id">
           {isLoggedIn ? <SneakerDetails /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/lists" exact>
+          {isLoggedIn ? <CollectionList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/lists/:id" exact>
+          {isLoggedIn ? <CollectionDetails /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/listform" exact>
+          {isLoggedIn ? <ListForm /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/listeditform/:id" exact>
+          {isLoggedIn ? <ListUpdateForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

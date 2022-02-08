@@ -13,5 +13,6 @@ namespace Soleful.Repositories
         List<Collection> GetCollectionByUserId(int id);
         void Add(Collection collection);
         void Delete(int id);
+        void Update(Collection collection);
     }
 }
