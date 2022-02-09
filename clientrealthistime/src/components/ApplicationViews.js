@@ -13,6 +13,8 @@ import { CollectionList } from "./list/collectionList";
 import { CollectionDetails } from "./list/collectionDetails";
 import { ListForm } from "./list/listForm";
 import { ListUpdateForm } from "./list/listEditForm";
+import { SneakerForm } from "./sneaker/sneakerForm";
+import { SneakerUpdateForm } from "./sneaker/sneakerEditForm";
 
 export default function ApplicationViews({ isLoggedIn }) {
 
@@ -31,6 +33,14 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/sneaker/:id">
           {isLoggedIn ? <SneakerDetails /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/sneakereditform/:id">
+          {isLoggedIn ? <SneakerUpdateForm /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/createsneaker/">
+          {isLoggedIn ? <SneakerForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/lists" exact>

@@ -55,9 +55,6 @@ export const SneakerDetails = () => {
         addListSneaker(listSneaker)
         console.log(listSneaker)
     }
-        if (!sneaker.title) {
-        return null;
-    }
     return (
         <>
             <ListGroup>

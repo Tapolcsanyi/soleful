@@ -7,14 +7,20 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getUserProfileByFirebaseId, getUserProfileById } from "../../modules/userManager";
 import firebase from "firebase";
+import { getLoggedInUser } from "../../modules/userManager";
 
-export const SneakerCard = ({ sneaker }) => {
+export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
 
+    const [user, setUser] = useState({});
     const [userSneaker, setUserSneaker] = useState({
         SneakerId: 0
     });
 
     const history = useHistory();
+
+    useEffect(() => {
+        getLoggedInUser().then(user => setUser(user))
+    }, []);
 
     const onClickAddUserSneaker = (event) => {
         const newUserSneaker = { ...userSneaker }
@@ -28,6 +34,27 @@ export const SneakerCard = ({ sneaker }) => {
         addUserSneaker(newUserSneaker)
     }
 
+    const handleEditSneaker = () => {
+        history.push(`/sneakereditform/${sneaker.id}`);
+    };
+
+    if(user.userTypeId == 1){
+        return (
+            <Card>
+                <CardBody>
+                    <Link to={`/sneaker/${sneaker.id}`}>
+                        <h3>{sneaker.title}</h3>
+                    </Link>
+                </CardBody>
+                <CardBody>
+                    <p>{sneaker.shoe}</p>
+                    <p>{sneaker.name}</p>
+                </CardBody>
+                <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
+                <Button onClick={() => handleDeleteSneaker(sneaker.id)}>Delete Sneaker</Button>
+                <Button onClick={handleEditSneaker} id="SneakerId" value={sneaker.id}>Edit Sneaker</Button>
+            </Card>)
+    } else {
     return (
         <Card>
             <CardBody>
@@ -41,6 +68,7 @@ export const SneakerCard = ({ sneaker }) => {
             </CardBody>
             <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
         </Card>)
+    }
 }
 
 export default SneakerCard;

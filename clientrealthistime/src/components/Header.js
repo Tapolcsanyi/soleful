@@ -13,6 +13,7 @@ import { logout } from '../modules/authManager';
 import firebase from "firebase";
 import 'firebase/auth'; //v9
 import 'firebase/firestore'; //v9
+import '../index.css'
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);

@@ -9,7 +9,7 @@ export const CollectionDetails = () => {
     const [sneakers, setSneakers] = useState([]);
     const { id } = useParams();
 
-    const getSneakers = (id) => {
+    const getSneakers = () => {
         getListSneakerByListId(id).then(setSneakers);
     }
 
@@ -25,7 +25,7 @@ export const CollectionDetails = () => {
 
     return (
         <> <div>
-            <div>{sneakers.map(sneaker => <ListSneakerCard key={sneaker.id} sneaker={sneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
+            <div>{sneakers.map(usneaker => <ListSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
         </div>
         </>
     )

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Soleful.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Soleful.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,20 +31,31 @@ namespace Soleful.Controllers
 
         // POST api/<SneakerController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult AddCollection(Sneaker sneaker)
         {
+            _sneakerRepository.Add(sneaker);
+            return CreatedAtAction("Get", new { id = sneaker.Id }, sneaker);
         }
 
         // PUT api/<SneakerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Sneaker sneaker)
         {
+            if (id != sneaker.Id)
+            {
+                return BadRequest();
+            }
+
+            _sneakerRepository.Update(sneaker);
+            return NoContent();
         }
 
         // DELETE api/<SneakerController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _sneakerRepository.Delete(id);
+            return NoContent();
         }
     }
 }

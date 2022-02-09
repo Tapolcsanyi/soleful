@@ -10,5 +10,8 @@ namespace Soleful.Repositories
     {
         List<Sneaker> GetAll();
         Sneaker GetSneakerById(int id);
+        void Delete(int id);
+        void Add(Sneaker sneaker);
+        void Update(Sneaker sneaker);
     }
 }

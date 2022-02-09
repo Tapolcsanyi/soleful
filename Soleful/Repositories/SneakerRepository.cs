@@ -71,6 +71,78 @@ namespace Soleful.Repositories
                 }
             }
         }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @$"DELETE FROM Sneaker
+                                         WHERE id = {id};";
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Add(Sneaker sneaker)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Sneaker (
+                            Brand, Name, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year)
+                        OUTPUT INSERTED.ID
+                        VALUES (
+                            @Brand, @Name, @Gender, @Colorway, @ReleaseDate, @RetailPrice, @Shoe, @Title, @Year )";
+                    cmd.Parameters.AddWithValue("@Brand", sneaker.Brand);
+                    cmd.Parameters.AddWithValue("@Name", DbUtils.ValueOrDBNull(sneaker.Name));
+                    cmd.Parameters.AddWithValue("@Gender", sneaker.Gender);
+                    cmd.Parameters.AddWithValue("@Colorway", sneaker.Colorway);
+                    cmd.Parameters.AddWithValue("@ReleaseDate", sneaker.ReleaseDate);
+                    cmd.Parameters.AddWithValue("@RetailPrice", sneaker.RetailPrice);
+                    cmd.Parameters.AddWithValue("@Shoe", sneaker.Shoe);
+                    cmd.Parameters.AddWithValue("@Title", sneaker.Title);
+                    cmd.Parameters.AddWithValue("@Year", sneaker.Year);
+
+                    sneaker.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+        public void Update(Sneaker sneaker)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE Sneaker
+                                        SET Name = @Name, Brand = @Brand, 
+                                        Gender = @Gender, Colorway = @Colorway, 
+                                        ReleaseDate = @ReleaseDate, RetailPrice = @RetailPrice, 
+                                        Shoe = @Shoe, Title = @Title, Year = @Year
+                                        WHERE Id = @id";
+                    cmd.Parameters.AddWithValue("@Brand", sneaker.Brand);
+                    cmd.Parameters.AddWithValue("@Name", DbUtils.ValueOrDBNull(sneaker.Name));
+                    cmd.Parameters.AddWithValue("@Gender", sneaker.Gender);
+                    cmd.Parameters.AddWithValue("@Colorway", sneaker.Colorway);
+                    cmd.Parameters.AddWithValue("@ReleaseDate", sneaker.ReleaseDate);
+                    cmd.Parameters.AddWithValue("@RetailPrice", sneaker.RetailPrice);
+                    cmd.Parameters.AddWithValue("@Shoe", sneaker.Shoe);
+                    cmd.Parameters.AddWithValue("@Title", sneaker.Title);
+                    cmd.Parameters.AddWithValue("@Year", sneaker.Year);
+                    cmd.Parameters.AddWithValue("@id", sneaker.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         private Sneaker NewSneakerFromReader(SqlDataReader reader)
         {
             Sneaker sneaker = new Sneaker()
