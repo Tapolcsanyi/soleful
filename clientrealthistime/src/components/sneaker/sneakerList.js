@@ -6,6 +6,7 @@ import { Button } from "reactstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getLoggedInUser } from "../../modules/userManager";
 import { deleteListSneaker } from "../../modules/listSneakerManager";
+import './sneaker.css'
 
 export const SneakerList = () => {
     const [sneakers, setSneakers] = useState([]);
@@ -46,16 +47,16 @@ export const SneakerList = () => {
         return (
             <>
             <Button onClick={handleShoeButton}>Create a Shoe</Button>
-            <div>
-                <div>{sneakers.map(sneaker => <SneakerCard key={sneaker.id} sneaker={sneaker} handleDeleteSneaker={handleDeleteSneaker} />)}</div>
+            <div className="mainBody">
+                <div className="cardList" >{sneakers.map(sneaker => <SneakerCard key={sneaker.id} sneaker={sneaker} handleDeleteSneaker={handleDeleteSneaker} />)}</div>
             </div>
             </>
         )
     } else {
         return (
         <>
-            <div>
-                <div>{sneakers.map(sneaker => <SneakerCard key={sneaker.id} sneaker={sneaker} />)}</div>
+            <div className="mainBody">
+                <div className="cardList">{sneakers.map(sneaker => <SneakerCard key={sneaker.id} sneaker={sneaker} />)}</div>
             </div>
         </>
         )

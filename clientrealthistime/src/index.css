@@ -16,10 +16,24 @@ Nav {
   background-color: grey;
 }
 
-NavItem {
-  align-items: center;
+.navItem {
+  background-color: teal;
 }
 
-navLink {
-  color: red;
+.navLink {
+  background-color: red;
+}
+
+.navBar {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+.mainBody {
+  background: #FFFFFF;
+background: -moz-linear-gradient(45deg, #FFFFFF 0%, #FFFFFF 40%, white 100%);
+background: -webkit-linear-gradient(45deg, #FFFFFF 0%, #FFFFFF 40%, white 100%);
+background: linear-gradient(45deg, #FFFFFF 0%, #FFFFFF 40%, white 100%);
+  /* background-image: url("../public/jordancollection_3000x3000.png"); */
 }

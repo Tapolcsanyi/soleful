@@ -23,22 +23,22 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar className="navBar" color="light" light expand="md">
         <NavbarBrand tag={RRNavLink} to="/">Soleful</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav  navbar>
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
               <>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/">Shoes</NavLink>
+                <NavItem className="navItem">
+                  <NavLink className="navLink" tag={RRNavLink} to="/">Shoes</NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/mycollection">My Collection</NavLink>
+                <NavItem className="navItem">
+                  <NavLink className="navLink" tag={RRNavLink} to="/mycollection">My Collection</NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/lists">My Lists</NavLink>
+                <NavItem className="navItem">
+                  <NavLink className="navLink" tag={RRNavLink} to="/lists">My Lists</NavLink>
                 </NavItem></>
             }
           </Nav>

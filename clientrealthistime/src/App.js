@@ -5,6 +5,7 @@ import ApplicationViews from "./components/ApplicationViews";
 import Header from './components/Header';
 import UserSneakerList from './components/myCollection/myCollection';
 import { onLoginStatusChange } from "./modules/authManager";
+import './index.css'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);

@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getUserProfileByFirebaseId, getUserProfileById } from "../../modules/userManager";
 import firebase from "firebase";
 import { getLoggedInUser } from "../../modules/userManager";
+import './sneaker.css'
 
 export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
 
@@ -40,11 +41,13 @@ export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
 
     if(user.userTypeId == 1){
         return (
+            <div  className=""> 
             <Card>
                 <CardBody>
                     <Link to={`/sneaker/${sneaker.id}`}>
                         <h3>{sneaker.title}</h3>
                     </Link>
+                    <img src={sneaker.image}></img>
                 </CardBody>
                 <CardBody>
                     <p>{sneaker.shoe}</p>
@@ -53,21 +56,22 @@ export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
                 <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
                 <Button onClick={() => handleDeleteSneaker(sneaker.id)}>Delete Sneaker</Button>
                 <Button onClick={handleEditSneaker} id="SneakerId" value={sneaker.id}>Edit Sneaker</Button>
-            </Card>)
+            </Card>
+            </div>)
     } else {
     return (
-        <Card>
+        <div className="">
+        <Card className="cardBody">
             <CardBody>
+            <img className="sneakerImg" src={sneaker.image}></img>
                 <Link to={`/sneaker/${sneaker.id}`}>
                     <h3>{sneaker.title}</h3>
                 </Link>
+                <h3>${sneaker.retailPrice}</h3>
+                <Button className="sneakerButton" onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
             </CardBody>
-            <CardBody>
-                <p>{sneaker.shoe}</p>
-                <p>{sneaker.name}</p>
-            </CardBody>
-            <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
-        </Card>)
+        </Card>
+        </div>)
     }
 }
 

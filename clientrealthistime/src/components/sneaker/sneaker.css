@@ -1,0 +1,49 @@
+.cardList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-content: stretch; */
+    margin: 20px;
+}
+
+.cardBody {
+    display: flex;
+    align-content: stretch;
+    justify-content: center;
+    margin: 20px;
+    border: 0px solid grey;
+    flex-grow: 1;
+    width: 600px;
+    height: 340px
+}
+
+.sneakerImg {
+    height: 200px;
+    width: 300px;
+}
+
+.mainBody {
+    /* display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: yellow; */
+}
+
+.sneakerButton {
+    color: white; font-size: 20px; line-height: 1px; padding: 10px;
+    margin-left: 3px;
+    margin-bottom: 1px;
+    border-radius: 0px;
+    font-weight: 400; 
+    text-decoration: none solid grey; font-style: normal; 
+    font-variant: normal; text-transform: none;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: grey; 
+    display: inline-block;}
+    .sneakerButton:hover {
+    background: rgb(73, 73, 73);
+    border-color: rgb(73, 73, 73); }
+    .sneakerButton:active {
+    background: red;
+    border-color: red; }

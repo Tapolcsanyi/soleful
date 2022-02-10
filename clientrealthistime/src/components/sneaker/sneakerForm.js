@@ -17,7 +17,8 @@ export const SneakerForm = () => {
         retailPrice: 0,
         shoe: "",
         title: "",
-        year: 0
+        year: 0,
+        image: ""
 	});
 
     const history = useHistory();
@@ -88,6 +89,9 @@ export const SneakerForm = () => {
                     <div className="formInput">
                         <input type="number" id="year" onChange={handleControlledInputChange} className="" placeholder="year" />
                     </div>
+                    <div className="formInput">
+                        <input type="text" id="image" onChange={handleControlledInputChange} className="" placeholder="image" />
+                    </div>
                 <div className="salaryFormContainer2">
                 <button className="budgetButton" onClick={handleClickSaveTask}>Create Shoe</button>
                 <button className="budgetButton" onClick={() => history.push("/")}>Cancel</button>
@@ -97,11 +101,11 @@ export const SneakerForm = () => {
         </>
 
     )} else {
-        return 
+        return (
         <>
             <div>
                 <h2>Log in using an admin account to access this feature..</h2>
             </div>
-        </>
+        </>)
     }
 }

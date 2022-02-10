@@ -20,7 +20,7 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                    SELECT Id, Name, Brand, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year
+                    SELECT Id, Name, Brand, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year, Image
                     FROM Sneaker;";
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -39,7 +39,8 @@ namespace Soleful.Repositories
                                 RetailPrice = DbUtils.GetInt(reader, "RetailPrice"),
                                 Shoe = DbUtils.GetString(reader, "Shoe"),
                                 Title = DbUtils.GetString(reader, "Title"),
-                                Year = DbUtils.GetInt(reader, "Year")
+                                Year = DbUtils.GetInt(reader, "Year"),
+                                Image = DbUtils.GetString(reader, "Image")
                             }); ;
                         }
                         return sneakers;
@@ -55,7 +56,7 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @$"
-                    SELECT Id, Name, Brand, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year
+                    SELECT Id, Name, Brand, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year, Image
                     FROM Sneaker
                     WhERE Id = {id};";
 
@@ -97,10 +98,10 @@ namespace Soleful.Repositories
                 {
                     cmd.CommandText = @"
                         INSERT INTO Sneaker (
-                            Brand, Name, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year)
+                            Brand, Name, Gender, Colorway, ReleaseDate, RetailPrice, Shoe, Title, Year, Image)
                         OUTPUT INSERTED.ID
                         VALUES (
-                            @Brand, @Name, @Gender, @Colorway, @ReleaseDate, @RetailPrice, @Shoe, @Title, @Year )";
+                            @Brand, @Name, @Gender, @Colorway, @ReleaseDate, @RetailPrice, @Shoe, @Title, @Year, @Image )";
                     cmd.Parameters.AddWithValue("@Brand", sneaker.Brand);
                     cmd.Parameters.AddWithValue("@Name", DbUtils.ValueOrDBNull(sneaker.Name));
                     cmd.Parameters.AddWithValue("@Gender", sneaker.Gender);
@@ -110,6 +111,7 @@ namespace Soleful.Repositories
                     cmd.Parameters.AddWithValue("@Shoe", sneaker.Shoe);
                     cmd.Parameters.AddWithValue("@Title", sneaker.Title);
                     cmd.Parameters.AddWithValue("@Year", sneaker.Year);
+                    cmd.Parameters.AddWithValue("@Image", sneaker.Image);
 
                     sneaker.Id = (int)cmd.ExecuteScalar();
                 }
@@ -126,7 +128,7 @@ namespace Soleful.Repositories
                                         SET Name = @Name, Brand = @Brand, 
                                         Gender = @Gender, Colorway = @Colorway, 
                                         ReleaseDate = @ReleaseDate, RetailPrice = @RetailPrice, 
-                                        Shoe = @Shoe, Title = @Title, Year = @Year
+                                        Shoe = @Shoe, Title = @Title, Year = @Year, Image = @Image
                                         WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@Brand", sneaker.Brand);
                     cmd.Parameters.AddWithValue("@Name", DbUtils.ValueOrDBNull(sneaker.Name));
@@ -137,6 +139,7 @@ namespace Soleful.Repositories
                     cmd.Parameters.AddWithValue("@Shoe", sneaker.Shoe);
                     cmd.Parameters.AddWithValue("@Title", sneaker.Title);
                     cmd.Parameters.AddWithValue("@Year", sneaker.Year);
+                    cmd.Parameters.AddWithValue("@Image", sneaker.Image);
                     cmd.Parameters.AddWithValue("@id", sneaker.Id);
 
                     cmd.ExecuteNonQuery();
@@ -156,7 +159,8 @@ namespace Soleful.Repositories
                 RetailPrice = DbUtils.GetInt(reader, "RetailPrice"),
                 Shoe = DbUtils.GetString(reader, "Shoe"),
                 Title = DbUtils.GetString(reader, "Title"),
-                Year = DbUtils.GetInt(reader, "Year")
+                Year = DbUtils.GetInt(reader, "Year"),
+                Image = DbUtils.GetString(reader, "Image")
             };
             return sneaker;
         }

@@ -17,5 +17,6 @@ namespace Soleful.Models
         public string Shoe { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
+        public string Image { get; set; }
     }
 }

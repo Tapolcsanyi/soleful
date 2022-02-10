@@ -14,7 +14,8 @@ export const SneakerUpdateForm = () => {
         retailPrice: 0,
         shoe: "",
         title: "",
-        year: 0
+        year: 0,
+        image: ""
     });
 
     const { id } = useParams();
@@ -81,6 +82,10 @@ export const SneakerUpdateForm = () => {
                 <div>
                     <label className="sneaker-name" htmlFor="name">Sneaker Year</label>
                     <input type="number" required className="form-control" onChange={handleControlledInputChange} id="year" value={sneaker.year} />
+                </div>
+                <div>
+                    <label className="sneaker-name" htmlFor="name">Sneaker Image URL</label>
+                    <input type="text" required className="form-control" onChange={handleControlledInputChange} id="image" value={sneaker.image} />
                 </div>
                 <div className="alignRight">
                     <button type="button" onClick={handleConfirm} className="list_button">Save</button>
