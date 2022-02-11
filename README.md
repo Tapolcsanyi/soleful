@@ -2,7 +2,7 @@
 
 ### what is soleful?
 
-soleful is my full stack capstone project for NSS
+soleful is my full stack capstone project for NSS. its a sneaker management app to keep track of your sneakers.
 
 ### why soleful?
 
