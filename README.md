@@ -12,4 +12,4 @@ i like sneakers and using sneakers seemed fun to show off the object oriented pr
 
 clone the repo, then simply run the create and seed scripts in a new sql database
 
-![erd image](Soleful/docs/bruhis.png)
+![erd image](clientrealthistime/docs/bruhis.png)
