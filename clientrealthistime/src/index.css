@@ -12,22 +12,49 @@ code {
     monospace;
 }
 
-Nav {
+.navBar {
+  display: flex;
   background-color: grey;
+  justify-content: space-around;
+}
+
+.navBar2 {
+  display: flex;
+  background-color: grey;
+  justify-content: flex-end;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .navItem {
   background-color: teal;
+  height: 30px;
+  margin: 20px;
+  list-style-type: none;
 }
 
 .navLink {
-  background-color: red;
-}
+  background-color: grey;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  list-style-type: none;}
+  .navLink:hover {
+    background-color: rgb(78, 78, 78);
+  }
+  .navLink:active {
+    background-color: red;
+  }
 
-.navBar {
-  display: flex;
-  justify-content: flex-end;
-  align-content: center;
+  .navLink2 {
+    background-color: red;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    list-style-type: none;
 }
 
 .mainBody {
@@ -36,4 +63,7 @@ background: -moz-linear-gradient(45deg, #FFFFFF 0%, #FFFFFF 40%, white 100%);
 background: -webkit-linear-gradient(45deg, #FFFFFF 0%, #FFFFFF 40%, white 100%);
 background: linear-gradient(45deg, #FFFFFF 0%, #FFFFFF 40%, white 100%);
   /* background-image: url("../public/jordancollection_3000x3000.png"); */
+}
+
+.appContainer {
 }

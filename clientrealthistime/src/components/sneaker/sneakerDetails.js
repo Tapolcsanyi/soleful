@@ -5,7 +5,7 @@ import { getSneakerById } from "../../modules/sneakerManager";
 import { useParams, useHistory } from "react-router-dom";
 import { getAllUserCollection } from "../../modules/collectionManager";
 import { addListSneaker } from "../../modules/listSneakerManager";
-
+import '../sneaker/sneaker.css'
 
 export const SneakerDetails = () => {
 
@@ -57,31 +57,35 @@ export const SneakerDetails = () => {
     }
     return (
         <>
-            <ListGroup>
-                <ListGroupItem>
-                    <h3>{sneaker.title}</h3>
+        <div  className="sneakerDetails">
+        <div>
+            <ListGroup className="listGroup">
+                <ListGroupItem className="sneakerWords">
+                    <h2>{sneaker.title}</h2>
+                    <img src={sneaker.image}></img>
                 </ListGroupItem>
-                <ListGroupItem>
-                    <p>{sneaker.colorway}</p>
-                </ListGroupItem>
-                <ListGroupItem>
-                    <p>{sneaker.year}</p>
-                    <p>Sillhouette: {sneaker.shoe}</p>
-                    <p>Category: {sneaker.name}</p>
+                <ListGroupItem className="sneakerWords">
+                    <h3>Color: {sneaker.colorway}</h3>
+                    <h3>Release Year: {sneaker.year}</h3>
+                    <h3>Sillhouette: {sneaker.shoe}</h3>
                 </ListGroupItem>
             </ListGroup>
+            <div className="listContainer">
             <div>
-                <Button onClick={() => history.push("")} >Back to List</Button>
+                <Button className="sneakerButton2" onClick={() => history.push("")} >Back to List</Button>
             </div>
             <div>
-                <select className="" id="ListId" onChange={handleControlledInputChange}>
-                    <option selected disabled >Add to List</option>
-                        {lists.map(list => <option key={list.id} value={list.id}>{list.name}</option>)}
+                <select className="dropdown" id="ListId" onChange={handleControlledInputChange}>
+                    <option className="dropdown-content" selected disabled >Add to List</option>
+                        {lists.map(list => <option className="dropdown-content" key={list.id} value={list.id}>{list.name}</option>)}
                 </select>
             </div>
             <div>
-                <Button onClick={handleClickSaveTask}>Add to List</Button>
+                <Button className="sneakerButton2" onClick={handleClickSaveTask}>Add to List</Button>
             </div>
+            </div>
+        </div>
+        </div>
         </>
     )
 }

@@ -3,6 +3,7 @@ import { CollectionCard } from "./collection";
 import { deleteCollection, getAllUserCollection } from "../../modules/collectionManager";
 import { Button } from "reactstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import '../sneaker/sneaker.css'
 
 export const CollectionList = () => {
     const [collections, setCollections] = useState([]);
@@ -30,10 +31,10 @@ export const CollectionList = () => {
     return (
         <> 
             <div>
-                <Button onClick={() => history.push("/listform")}>Create a List</Button>
+                <Button className="sneakerButton2" onClick={() => history.push("/listform")}>Create a List</Button>
             </div>
             <div>
-                <div>{collections.map(collection => <CollectionCard key={collection.id} collection={collection} handleDeleteCollection={handleDeleteCollection}/>)}</div>
+                <div className="cardList" >{collections.map(collection => <CollectionCard key={collection.id} collection={collection} handleDeleteCollection={handleDeleteCollection}/>)}</div>
             </div>
         </>
     )

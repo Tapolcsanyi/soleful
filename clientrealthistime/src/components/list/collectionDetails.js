@@ -24,8 +24,8 @@ export const CollectionDetails = () => {
     }, []);
 
     return (
-        <> <div>
-            <div>{sneakers.map(usneaker => <ListSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
+        <> <div className="mainBody">
+            <div className="cardList">{sneakers.map(usneaker => <ListSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
         </div>
         </>
     )

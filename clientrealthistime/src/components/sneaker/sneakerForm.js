@@ -53,7 +53,7 @@ export const SneakerForm = () => {
 <h2 className="salaryName">Add A New Sneaker</h2>
 
 
-        <form className="salaryContainer">
+        <form className="listInput">
 
             
 

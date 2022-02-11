@@ -25,7 +25,7 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @$"
-                    SELECT DISTINCT ls.Id, ls.SneakerId, ls.ListId, s.Id, s.Name, s.Brand, s.Gender, s.Colorway, s.ReleaseDate, s.RetailPrice, s.Shoe, s.Title, s.Year, l.Id,
+                    SELECT DISTINCT ls.Id, ls.SneakerId, ls.ListId, s.Id, s.Name, s.Brand, s.Gender, s.Colorway, s.ReleaseDate, s.RetailPrice, s.Shoe, s.Title, s.Year, s.Image, l.Id,
                     l.Id, l.Name, l.UserId
                     FROM ListSneaker ls
                     LEFT JOIN Sneaker s ON ls.SneakerId = s.Id
@@ -52,7 +52,7 @@ namespace Soleful.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @$"
-                    SELECT DISTINCT ls.Id, ls.SneakerId, ls.ListId, s.Id, s.Name, s.Brand, s.Gender, s.Colorway, s.ReleaseDate, s.RetailPrice, s.Shoe, s.Title, s.Year, l.Id,
+                    SELECT DISTINCT ls.Id, ls.SneakerId, ls.ListId, s.Id, s.Name, s.Brand, s.Gender, s.Colorway, s.ReleaseDate, s.RetailPrice, s.Shoe, s.Title, s.Year, s.Image, l.Id,
                     l.Id, l.Name, l.UserId
                     FROM ListSneaker ls
                     LEFT JOIN Sneaker s ON ls.SneakerId = s.Id
@@ -120,6 +120,7 @@ namespace Soleful.Repositories
                     RetailPrice = DbUtils.GetInt(reader, "RetailPrice"),
                     Shoe = DbUtils.GetString(reader, "Shoe"),
                     Title = DbUtils.GetString(reader, "Title"),
+                    Image = DbUtils.GetString(reader, "Image"),
                     Year = DbUtils.GetInt(reader, "Year")
                 },
                 list = new Collection

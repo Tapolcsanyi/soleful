@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { addCollection } from "../../modules/collectionManager";
+import '../sneaker/sneaker.css'
 
 export const ListForm = () => {
 
@@ -36,24 +37,21 @@ export const ListForm = () => {
 
     return (
         <>
-<h2 className="salaryName">Add A New List</h2>
-
-
-        <form className="salaryContainer">
+        <form className="listInput">
 
             
 
             <fieldset className="">
 
                 <div className="salaryFormContainer3">
-                    <h2 className="salaryName">List Name</h2>
+                    <h2 className="salaryName">Name Your New List</h2>
                 </div>
                     <div className="formInput">
                         <input type="text" id="name" onChange={handleControlledInputChange} className="" placeholder="List" />
                     </div>
                 <div className="salaryFormContainer2">
-                <button className="budgetButton" onClick={handleClickSaveTask}>Create List</button>
-                <button className="budgetButton" onClick={() => history.push("/")}>Cancel</button>
+                <button className="sneakerButton2" onClick={handleClickSaveTask}>Create List</button>
+                <button className="sneakerButton2" onClick={() => history.push("/lists")}>Cancel</button>
             </div>
             </fieldset>
         </form>

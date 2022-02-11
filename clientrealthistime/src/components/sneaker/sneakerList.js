@@ -46,7 +46,7 @@ export const SneakerList = () => {
       {
         return (
             <>
-            <Button onClick={handleShoeButton}>Create a Shoe</Button>
+            <Button className="sneakerButton2" onClick={handleShoeButton}>Create a Shoe</Button>
             <div className="mainBody">
                 <div className="cardList" >{sneakers.map(sneaker => <SneakerCard key={sneaker.id} sneaker={sneaker} handleDeleteSneaker={handleDeleteSneaker} />)}</div>
             </div>

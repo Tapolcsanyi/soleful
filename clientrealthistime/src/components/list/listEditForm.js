@@ -32,7 +32,9 @@ export const ListUpdateForm = () => {
     };
     return (
         <>
+        <div className="listInput">
             <form>
+                <fieldset>
                 <div>
                     <h3>Edit List</h3>
                     <label className="list-name" htmlFor="name">List Name</label> <input
@@ -43,20 +45,20 @@ export const ListUpdateForm = () => {
                         id="name"
                         value={list.name} />
                 </div>
-                <div className="alignRight">
                     <button
                         type="button"
                         onClick={handleConfirm}
-                        className="list_button"
+                        className="sneakerButton2"
                     >Save</button>
-                </div>
                 <button
-                    className="btn-add-edit"
+                    className="sneakerButton2"
                     variant="secondary"
                     onClick={() => history.push("/lists")}>
                     Cancel
                 </button>
+            </fieldset>
             </form>
+        </div>
         </>
     );
 }

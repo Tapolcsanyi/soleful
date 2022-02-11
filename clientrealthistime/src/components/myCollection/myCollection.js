@@ -27,8 +27,8 @@ export const UserSneakerList = () => {
     console.log(sneakers)
 
     return (
-        <> <div>
-            <div>{sneakers.map(usneaker => <UserSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
+        <> <div className="mainBody">
+            <div className="cardList">{sneakers.map(usneaker => <UserSneakerCard key={usneaker.id} usneaker={usneaker} handleDeleteSneaker={handleDeleteSneaker}/>)}</div>
         </div>
         </>
     )

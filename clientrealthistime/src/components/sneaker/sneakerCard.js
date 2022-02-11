@@ -33,6 +33,9 @@ export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
         setUserSneaker(newUserSneaker)
         console.log(newUserSneaker)
         addUserSneaker(newUserSneaker)
+        console.log(sneaker.image)
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
     }
 
     const handleEditSneaker = () => {
@@ -42,20 +45,17 @@ export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
     if(user.userTypeId == 1){
         return (
             <div  className=""> 
-            <Card>
-                <CardBody>
-                    <Link to={`/sneaker/${sneaker.id}`}>
-                        <h3>{sneaker.title}</h3>
-                    </Link>
-                    <img src={sneaker.image}></img>
+            <Card className="cardBody">
+            <CardBody>
+            <img className="sneakerImg" src={sneaker.image}></img>
+                <Link to={`/sneaker/${sneaker.id}`}>
+                    <h3>{sneaker.title}</h3>
+                </Link>
+                <h3>Retail Price: ${sneaker.retailPrice}</h3>
+                <Button className="sneakerButton2" onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
+                <Button className="sneakerButton2" onClick={() => handleDeleteSneaker(sneaker.id)}>Delete Sneaker</Button>
+                <Button className="sneakerButton2" onClick={handleEditSneaker} id="SneakerId" value={sneaker.id}>Edit Sneaker</Button>
                 </CardBody>
-                <CardBody>
-                    <p>{sneaker.shoe}</p>
-                    <p>{sneaker.name}</p>
-                </CardBody>
-                <Button onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
-                <Button onClick={() => handleDeleteSneaker(sneaker.id)}>Delete Sneaker</Button>
-                <Button onClick={handleEditSneaker} id="SneakerId" value={sneaker.id}>Edit Sneaker</Button>
             </Card>
             </div>)
     } else {
@@ -67,7 +67,7 @@ export const SneakerCard = ({ sneaker, handleDeleteSneaker }) => {
                 <Link to={`/sneaker/${sneaker.id}`}>
                     <h3>{sneaker.title}</h3>
                 </Link>
-                <h3>${sneaker.retailPrice}</h3>
+                <h3>Retail Price: ${sneaker.retailPrice}</h3>
                 <Button className="sneakerButton" onClick={onClickAddUserSneaker} id="SneakerId" value={sneaker.id}>Add to My Collection</Button>
             </CardBody>
         </Card>

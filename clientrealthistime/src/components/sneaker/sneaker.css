@@ -1,7 +1,7 @@
 .cardList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     /* align-content: stretch; */
     margin: 20px;
 }
@@ -9,12 +9,22 @@
 .cardBody {
     display: flex;
     align-content: stretch;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 20px;
     border: 0px solid grey;
     flex-grow: 1;
     width: 600px;
     height: 340px
+}
+
+.cardBody2 {
+    display: flex;
+    align-content: stretch;
+    justify-content: space-evenly;
+    margin: 20px;
+    border: 0px solid grey;
+    flex-grow: 1;
+    width: 1000px;
 }
 
 .sneakerImg {
@@ -31,7 +41,7 @@
 
 .sneakerButton {
     color: white; font-size: 20px; line-height: 1px; padding: 10px;
-    margin-left: 3px;
+    margin-left: 0px;
     margin-bottom: 1px;
     border-radius: 0px;
     font-weight: 400; 
@@ -40,10 +50,94 @@
     border: 3px solid grey;
     border-radius: 10px;
     background-color: grey; 
-    display: inline-block;}
+    display: inline-block;
+}
     .sneakerButton:hover {
     background: rgb(73, 73, 73);
     border-color: rgb(73, 73, 73); }
     .sneakerButton:active {
     background: red;
     border-color: red; }
+
+.sneakerButtonContainer {
+    margin: 5px;
+    }
+
+.sneakerButton2 {
+    color: white; font-size: 20px; line-height: 1px; padding: 10px;
+    margin: 5px;
+    margin-bottom: 1px;
+    border-radius: 0px;
+    font-weight: 400; 
+    text-decoration: none solid grey; font-style: normal; 
+    font-variant: normal; text-transform: none;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: grey; 
+    display: inline-block;
+}
+    .sneakerButton2:hover {
+        background: rgb(73, 73, 73);
+        border-color: rgb(73, 73, 73); }
+    .sneakerButton2:active {
+        background: red;
+        border-color: red; }
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listInput {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.listContainer {
+    display: flex;
+}
+
+.sneakerDetails {
+    display: flex;
+    justify-content: center;
+}
+
+.sneakerWords {
+    list-style-type: none;
+}
+
+.listGroup {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dropdown {
+    color: white; font-size: 20px; line-height: 1px; padding: 0px;
+    margin: 3px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    font-weight: 400; 
+    text-decoration: none solid grey; font-style: normal; 
+    font-variant: normal; text-transform: none;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: grey; 
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+      background-color: grey;
+      color: white;
+  }
+  .dropdown-content:hover{
+      background-color: grey;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown::after .dropdown-content {
+    background-color: black;
+  }

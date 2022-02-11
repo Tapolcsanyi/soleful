@@ -9,19 +9,21 @@ export const UserSneakerCard = ({ usneaker, handleDeleteSneaker }) => {
 
     const history = useHistory();
 
+    console.log(usneaker.sneaker.image)
+
     return (
-        <Card>
+<div className="">
+        <Card className="cardBody">
             <CardBody>
+            <img className="sneakerImg" src={usneaker.sneaker.image}></img>
                 <Link to={`/sneaker/${usneaker.sneakerId}`}>
                     <h3>{usneaker.sneaker.title}</h3>
                 </Link>
+                <h3>Retail Price: ${usneaker.sneaker.retailPrice}</h3>
+                <Button className="sneakerButton" onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from Collection</Button>
             </CardBody>
-            <CardBody>
-                <p>{usneaker.sneaker.shoe}</p>
-                <p>{usneaker.sneaker.name}</p>
-            </CardBody>
-            <Button onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from Collection</Button>
-        </Card>)
+        </Card>
+        </div>)
 }
 
 export default UserSneakerCard;

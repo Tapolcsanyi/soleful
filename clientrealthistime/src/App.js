@@ -20,8 +20,10 @@ function App() {
 
   return (
     <Router>
+      <div className="appContainer">
       <Header isLoggedIn={isLoggedIn}/>
       <ApplicationViews isLoggedIn={isLoggedIn}/>
+      </div>
     </Router>
   );
 }

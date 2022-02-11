@@ -7,19 +7,21 @@ import { deleteUserSneaker } from "../../modules/userSneakerManager";
 
 export const ListSneakerCard = ({ usneaker, handleDeleteSneaker }) => {
 
+    const history = useHistory();
+
     return (
-        <Card>
+        <div className="">
+        <Card className="cardBody">
             <CardBody>
-                <Link to={`/sneaker/${usneaker.sneakerId}`}>
+            <img className="sneakerImg" src={usneaker.sneaker.image}></img>
+            <Link to={`/sneaker/${usneaker.sneakerId}`}>
                     <h3>{usneaker.sneaker.title}</h3>
                 </Link>
+                <h3>Retail Price: ${usneaker.sneaker.retailPrice}</h3>
+                <Button className="sneakerButton" onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from Collection</Button>
             </CardBody>
-            <CardBody>
-                <p>{usneaker.sneaker.shoe}</p>
-                <p>{usneaker.sneaker.name}</p>
-            </CardBody>
-            <Button onClick={() => handleDeleteSneaker(usneaker.id)}>Remove from List</Button>
-        </Card>)
+        </Card>
+        </div>)
 }
 
 export default ListSneakerCard;
