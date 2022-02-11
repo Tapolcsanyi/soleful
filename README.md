@@ -6,7 +6,7 @@ soleful is my full stack capstone project for NSS
 
 ### why soleful?
 
-i like sneakers and using sneakers seemed fun to show off the object oriented programming i had learned at NSS
+i like sneakers and using sneakers seemed like a fun way to show off the object oriented programming i had learned at NSS
 
 ### how do i run soleful?
 
